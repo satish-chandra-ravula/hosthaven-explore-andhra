@@ -1,25 +1,18 @@
-import { Clock, Headphones, Phone } from "lucide-react";
+import { Headphones } from "lucide-react";
 
 const FloatingSupportPill = () => {
   return (
-    <div className="fixed top-24 right-4 z-40 animate-float">
+    <div className="fixed top-24 right-4 z-40">
       <a 
         href="tel:+919876543210"
-        className="block bg-gradient-to-r from-primary to-saffron rounded-2xl px-5 py-4 shadow-gold animate-pulse-glow hover:scale-105 transition-transform cursor-pointer"
+        className="flex items-center gap-2 bg-card border border-primary/30 rounded-full px-4 py-2 shadow-card hover:shadow-gold hover:border-primary transition-all cursor-pointer group"
       >
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-              <Headphones className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center border-2 border-primary">
-              <Clock className="w-3 h-3 text-white" />
-            </div>
-          </div>
-          <div className="text-primary-foreground">
-            <p className="font-bold text-base">24/7 Available</p>
-            <p className="text-sm opacity-90">Support Anytime</p>
-          </div>
+        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+          <Headphones className="w-4 h-4 text-primary" />
+        </div>
+        <div className="text-xs">
+          <p className="font-semibold text-foreground">24/7</p>
+          <p className="text-muted-foreground">Support</p>
         </div>
       </a>
     </div>

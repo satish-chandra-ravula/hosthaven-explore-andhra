@@ -1,13 +1,32 @@
 import { useState } from "react";
-import { Calendar, Users, Search, MapPin, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon, Users, Search, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [destination, setDestination] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
+  const [checkIn, setCheckIn] = useState<Date>();
+  const [checkOut, setCheckOut] = useState<Date>();
   const [guests, setGuests] = useState("2");
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (destination) params.set("destination", destination);
+    if (checkIn) params.set("checkIn", format(checkIn, "yyyy-MM-dd"));
+    if (checkOut) params.set("checkOut", format(checkOut, "yyyy-MM-dd"));
+    if (guests) params.set("guests", guests);
+    
+    navigate(`/hotels?${params.toString()}`);
+  };
 
   return (
     <section className="relative py-10 md:py-20 overflow-hidden">
@@ -47,7 +66,7 @@ const HeroSection = () => {
                   Destination
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary z-10" />
                   <select
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
@@ -66,16 +85,30 @@ const HeroSection = () => {
                 <label className="text-xs font-semibold text-primary mb-2 block uppercase tracking-wide">
                   Check In
                 </label>
-                <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                  <Input
-                    type="date"
-                    value={checkIn}
-                    onChange={(e) => setCheckIn(e.target.value)}
-                    placeholder="dd-mm-yyyy"
-                    className="pl-12 h-14 bg-muted border-0 rounded-xl text-base font-medium"
-                  />
-                </div>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80",
+                        !checkIn && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="absolute left-4 w-5 h-5 text-primary" />
+                      {checkIn ? format(checkIn, "dd-MM-yyyy") : "dd-mm-yyyy"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={checkIn}
+                      onSelect={setCheckIn}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               {/* Check Out */}
@@ -83,16 +116,30 @@ const HeroSection = () => {
                 <label className="text-xs font-semibold text-primary mb-2 block uppercase tracking-wide">
                   Check Out
                 </label>
-                <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                  <Input
-                    type="date"
-                    value={checkOut}
-                    onChange={(e) => setCheckOut(e.target.value)}
-                    placeholder="dd-mm-yyyy"
-                    className="pl-12 h-14 bg-muted border-0 rounded-xl text-base font-medium"
-                  />
-                </div>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80",
+                        !checkOut && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="absolute left-4 w-5 h-5 text-primary" />
+                      {checkOut ? format(checkOut, "dd-MM-yyyy") : "dd-mm-yyyy"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={checkOut}
+                      onSelect={setCheckOut}
+                      disabled={(date) => date < (checkIn || new Date())}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               {/* Guests */}
@@ -101,7 +148,7 @@ const HeroSection = () => {
                   Guests
                 </label>
                 <div className="relative">
-                  <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                  <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary z-10" />
                   <select
                     value={guests}
                     onChange={(e) => setGuests(e.target.value)}
@@ -118,7 +165,12 @@ const HeroSection = () => {
             </div>
 
             <div className="mt-6 flex justify-center">
-              <Button variant="hero" size="xl" className="w-full md:w-auto min-w-[250px] text-lg">
+              <Button 
+                variant="hero" 
+                size="xl" 
+                className="w-full md:w-auto min-w-[250px] text-lg"
+                onClick={handleSearch}
+              >
                 <Search className="w-5 h-5" />
                 Search Hotels
               </Button>
