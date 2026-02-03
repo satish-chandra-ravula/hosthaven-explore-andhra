@@ -190,3 +190,18 @@
 .animate-color-blink {
   animation: color-blink 3s ease-in-out infinite;
 }
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 8px hsl(40 85% 65% / 0.6);
+  }
+  50% {
+    opacity: 0.85;
+    text-shadow: 0 0 12px hsl(40 85% 65% / 0.9);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
