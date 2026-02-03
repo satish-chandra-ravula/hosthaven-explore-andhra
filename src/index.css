@@ -164,6 +164,29 @@
   }
 }
 
+@keyframes color-blink {
+  0%, 100% {
+    background: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(30, 95%, 55%) 100%);
+    box-shadow: 0 0 20px hsl(38 92% 50% / 0.6);
+  }
+  25% {
+    background: linear-gradient(135deg, hsl(142, 76%, 45%) 0%, hsl(160, 84%, 39%) 100%);
+    box-shadow: 0 0 20px hsl(142 76% 45% / 0.6);
+  }
+  50% {
+    background: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(199, 89%, 48%) 100%);
+    box-shadow: 0 0 20px hsl(217 91% 60% / 0.6);
+  }
+  75% {
+    background: linear-gradient(135deg, hsl(280, 87%, 55%) 0%, hsl(262, 83%, 58%) 100%);
+    box-shadow: 0 0 20px hsl(280 87% 55% / 0.6);
+  }
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-color-blink {
+  animation: color-blink 3s ease-in-out infinite;
 }
