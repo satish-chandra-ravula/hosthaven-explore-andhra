@@ -13,6 +13,8 @@ import TempleDetails from "./pages/TempleDetails";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import VendorLogin from "./pages/VendorLogin";
+import VendorSignup from "./pages/VendorSignup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/vendor/login" element={<VendorLogin />} />
+          <Route path="/vendor/signup" element={<VendorSignup />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

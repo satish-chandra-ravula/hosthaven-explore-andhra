@@ -6,6 +6,7 @@ import { FeaturedHotels, FeaturedHomes } from "@/components/home/FeaturedSection
 import DestinationsSection from "@/components/home/DestinationsSection";
 import TemplesPreview from "@/components/home/TemplesPreview";
 import ServicesPreview from "@/components/home/ServicesPreview";
+import BecomePartner from "@/components/home/BecomePartner";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <FeaturedHomes />
       <TemplesPreview />
       <ServicesPreview />
+      <BecomePartner />
     </Layout>
   );
 };
