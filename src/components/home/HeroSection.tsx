@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import heroBg from "@/assets/hero-pattern-bg.jpg";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -30,17 +31,20 @@ const HeroSection = () => {
 
   return (
     <section className="relative py-10 md:py-20 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
-      
-      {/* Decorative Elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-saffron/10 rounded-full blur-3xl" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroBg} 
+          alt="" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+      </div>
 
       <div className="container mx-auto px-4 relative">
         {/* Hero Content */}
         <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
             <Sparkles className="w-4 h-4" />
             Discover Divine Andhra Pradesh
           </div>
@@ -58,7 +62,7 @@ const HeroSection = () => {
 
         {/* Search Card */}
         <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-2xl shadow-card-hover p-5 md:p-8 border border-border/50">
+          <div className="bg-card/95 backdrop-blur-md rounded-2xl shadow-card-hover p-5 md:p-8 border border-border/50">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
               {/* Destination */}
               <div className="lg:col-span-2">
@@ -185,7 +189,7 @@ const HeroSection = () => {
             { value: "100+", label: "Sacred Temples" },
             { value: "10K+", label: "Happy Guests" },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div key={stat.label} className="text-center bg-card/80 backdrop-blur-sm rounded-xl p-4">
               <p className="text-3xl md:text-4xl font-serif font-bold text-gradient-gold">
                 {stat.value}
               </p>
