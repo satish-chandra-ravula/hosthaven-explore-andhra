@@ -70,7 +70,7 @@ const HeroSection = () => {
                   Destination
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary z-10" />
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
                   <select
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
@@ -94,12 +94,12 @@ const HeroSection = () => {
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80",
+                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80 relative",
                         !checkIn && "text-muted-foreground"
                       )}
                     >
-                      <CalendarIcon className="absolute left-4 w-5 h-5 text-primary" />
-                      {checkIn ? format(checkIn, "dd-MM-yyyy") : "dd-mm-yyyy"}
+                      <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                      <span className="ml-1">{checkIn ? format(checkIn, "dd-MM-yyyy") : "dd-mm-yyyy"}</span>
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
@@ -125,12 +125,12 @@ const HeroSection = () => {
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80",
+                        "w-full h-14 pl-12 justify-start text-left font-medium bg-muted border-0 rounded-xl hover:bg-muted/80 relative",
                         !checkOut && "text-muted-foreground"
                       )}
                     >
-                      <CalendarIcon className="absolute left-4 w-5 h-5 text-primary" />
-                      {checkOut ? format(checkOut, "dd-MM-yyyy") : "dd-mm-yyyy"}
+                      <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                      <span className="ml-1">{checkOut ? format(checkOut, "dd-MM-yyyy") : "dd-mm-yyyy"}</span>
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
