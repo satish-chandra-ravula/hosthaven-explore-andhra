@@ -3,28 +3,22 @@ import { ArrowRight } from "lucide-react";
 
 const destinations = [
   {
-    id: "tirupati",
-    name: "Tirupati",
-    image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=600",
-    properties: 45,
-  },
-  {
     id: "vijayawada",
     name: "Vijayawada",
     image: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?w=600",
-    properties: 38,
+    properties: 25,
   },
   {
-    id: "visakhapatnam",
-    name: "Visakhapatnam",
+    id: "nandyala",
+    name: "Nandyala",
+    image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=600",
+    properties: 18,
+  },
+  {
+    id: "vetapalem",
+    name: "Vetapalem",
     image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600",
-    properties: 52,
-  },
-  {
-    id: "araku",
-    name: "Araku Valley",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",
-    properties: 24,
+    properties: 12,
   },
 ];
 
@@ -41,7 +35,7 @@ const DestinationsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {destinations.map((dest) => (
             <Link
               key={dest.id}

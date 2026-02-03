@@ -48,7 +48,7 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4 text-gold-light">Explore</h4>
             <ul className="space-y-2">
-              {["Tirupati", "Vijayawada", "Visakhapatnam", "Amaravati", "Araku Valley"].map((place) => (
+              {["Vijayawada", "Nandyala", "Vetapalem"].map((place) => (
                 <li key={place}>
                   <span className="text-cream-light/80 text-sm">{place}</span>
                 </li>

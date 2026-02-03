@@ -4,21 +4,21 @@ import { Button } from "@/components/ui/button";
 
 const temples = [
   {
-    id: "tirumala",
-    name: "Tirumala Venkateswara Temple",
-    location: "Tirupati",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600",
-  },
-  {
     id: "kanaka-durga",
     name: "Kanaka Durga Temple",
     location: "Vijayawada",
     image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600",
   },
   {
-    id: "simhachalam",
-    name: "Simhachalam Temple",
-    location: "Visakhapatnam",
+    id: "mahanandi",
+    name: "Mahanandi Temple",
+    location: "Nandyala",
+    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600",
+  },
+  {
+    id: "vetapalem-temple",
+    name: "Sri Venkateswara Temple",
+    location: "Vetapalem",
     image: "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=600",
   },
 ];
