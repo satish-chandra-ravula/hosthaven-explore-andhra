@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { MapPin, Clock, ArrowLeft, Star, Calendar, Users } from "lucide-react";
+import { MapPin, Clock, ArrowLeft } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
@@ -15,7 +15,7 @@ interface TempleData {
   name: string;
   location: string;
   region: string;
-  image: string;
+  images: string[];
   history: string;
   timings: {
     morning: string;
@@ -32,7 +32,11 @@ const templeData: Record<string, TempleData> = {
     name: "Tirumala Venkateswara Temple",
     location: "Tirupati, Chittoor District",
     region: "Rayalaseema",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
+    images: [
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
+    ],
     history: `The Tirumala Venkateswara Temple is one of the most visited religious sites in the world. Located on the seventh peak of Tirumala Hills, this ancient temple is dedicated to Lord Venkateswara, a form of Lord Vishnu. 
 
 The temple's origins date back over 2,000 years, with references in ancient texts and scriptures. The current structure was built by various dynasties including the Pallavas, Cholas, and the Vijayanagara Empire. The temple is known for its unique blend of Dravidian and Chalukyan architectural styles.
@@ -76,7 +80,11 @@ According to legend, Lord Vishnu took a loan from Kubera (the god of wealth) for
     name: "Kanaka Durga Temple",
     location: "Vijayawada, Krishna District",
     region: "Coastal Andhra",
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200",
+    images: [
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
+      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
+    ],
     history: `The Kanaka Durga Temple is an ancient Hindu temple dedicated to Goddess Durga, situated atop the Indrakeeladri hill on the banks of the Krishna River in Vijayawada.
 
 According to mythology, Goddess Durga killed the demon Mahishasura at this very spot after a fierce battle. The temple has mentions in the Rig Veda and is believed to be one of the Shakti Peethas.
@@ -109,6 +117,33 @@ The temple was originally built during the rule of the Rajendra Chola dynasty an
     ],
     nearbyHotels: ["Fortune Murali Park", "The Gateway Hotel", "Quality Inn DV Manor"],
   },
+  "mahanandi": {
+    id: "mahanandi",
+    name: "Mahanandi Temple",
+    location: "Nandyala, Kurnool District",
+    region: "Rayalaseema",
+    images: [
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
+      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
+    ],
+    history: `Mahanandi Temple is a famous Hindu temple dedicated to Lord Shiva. It is one of the nine Nandi temples in the Nallamala forest region.
+
+The temple is known for its sacred pushkarini (temple tank) and the beautiful surroundings of the Nallamala Hills.`,
+    timings: {
+      morning: "5:30 AM - 12:30 PM",
+      evening: "4:00 PM - 8:30 PM",
+      special: "Special timings during Maha Shivaratri",
+    },
+    darshanTypes: [
+      {
+        name: "Regular Darshan",
+        duration: "1-2 hours",
+        price: "Free",
+        description: "Standard darshan for all devotees",
+      },
+    ],
+    nearbyHotels: ["Sri Sai Residency", "Local Lodges"],
+  },
 };
 
 const defaultTemple: TempleData = {
@@ -116,7 +151,7 @@ const defaultTemple: TempleData = {
   name: "Temple",
   location: "Andhra Pradesh",
   region: "Andhra",
-  image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
+  images: ["https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200"],
   history: "This ancient temple holds deep spiritual significance in the region.",
   timings: {
     morning: "6:00 AM - 12:00 PM",
@@ -148,24 +183,56 @@ const TempleDetails = () => {
             Back to Temples
           </Link>
 
-          {/* Hero Image */}
-          <div className="relative rounded-2xl overflow-hidden aspect-[21/9] mb-8">
-            <img
-              src={temple.image}
-              alt={temple.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-heritage-brown/80 via-heritage-brown/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-sm font-medium rounded-full mb-3">
-                {temple.region}
-              </span>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold text-cream-light">
-                {temple.name}
-              </h1>
-              <div className="flex items-center gap-2 text-cream-light/80 mt-2">
-                <MapPin className="w-5 h-5" />
-                {temple.location}
+          {/* Images - Vertical on mobile, Hero on desktop */}
+          <div className="mb-8">
+            {/* Mobile: Vertical stack with smooth scroll */}
+            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
+              {temple.images.map((img, index) => (
+                <div key={index} className="rounded-xl overflow-hidden aspect-video relative">
+                  <img
+                    src={img}
+                    alt={`${temple.name} ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  {index === 0 && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-heritage-brown/80 via-transparent to-transparent">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full mb-2">
+                          {temple.region}
+                        </span>
+                        <h1 className="text-xl font-serif font-bold text-cream-light">
+                          {temple.name}
+                        </h1>
+                        <div className="flex items-center gap-1 text-cream-light/80 text-sm mt-1">
+                          <MapPin className="w-4 h-4" />
+                          {temple.location}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Hero Image */}
+            <div className="hidden md:block relative rounded-2xl overflow-hidden aspect-[21/9]">
+              <img
+                src={temple.images[0]}
+                alt={temple.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-heritage-brown/80 via-heritage-brown/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-sm font-medium rounded-full mb-3">
+                  {temple.region}
+                </span>
+                <h1 className="text-3xl md:text-4xl font-serif font-bold text-cream-light">
+                  {temple.name}
+                </h1>
+                <div className="flex items-center gap-2 text-cream-light/80 mt-2">
+                  <MapPin className="w-5 h-5" />
+                  {temple.location}
+                </div>
               </div>
             </div>
           </div>

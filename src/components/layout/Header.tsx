@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, Hotel, Home, Landmark, Wrench, LogIn, UserPlus } from "lucide-react";
+import { Menu, X, User, Hotel, Home, Landmark, Wrench, LogIn, UserPlus, House, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/", icon: Home },
   { name: "Hotels", path: "/hotels", icon: Hotel },
-  { name: "Homes", path: "/homes", icon: Home },
+  { name: "Homes", path: "/homes", icon: House },
   { name: "Temples", path: "/temples", icon: Landmark },
   { name: "Services", path: "/services", icon: Wrench },
 ];
@@ -21,10 +21,25 @@ const Header = () => {
       <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md shadow-card">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+
+            {/* Logo - Desktop Only (centered on mobile is in Hero) */}
+            <Link to="/" className="hidden md:flex items-center gap-2">
               <img src={logo} alt="HostHaven" className="h-12 md:h-14 w-auto" />
             </Link>
+
+            {/* Mobile Center - Globe Icon */}
+            <div className="md:hidden">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <Globe className="w-5 h-5 text-primary" />
+              </div>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">
@@ -58,18 +73,15 @@ const Header = () => {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {/* Mobile Right - User Icon */}
+            <button className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors">
+              <User className="w-5 h-5 text-muted-foreground" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Full Screen Menu - OYO Style */}
+      {/* Mobile Full Screen Menu */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-background animate-fade-in">
           {/* Menu Header */}
@@ -111,12 +123,12 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Navigation Grid - OYO Style */}
+          {/* Navigation Grid */}
           <div className="p-4">
             <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-1">
               Browse Categories
             </h3>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-5 gap-2">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 const isActive = location.pathname === link.path;
@@ -127,14 +139,14 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex flex-col items-center"
                   >
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-2 transition-all ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-1 transition-all ${
                       isActive 
                         ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30" 
                         : "bg-muted text-muted-foreground hover:bg-muted/80"
                     }`}>
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className={`text-xs font-medium ${
+                    <span className={`text-[10px] font-medium ${
                       isActive ? "text-primary" : "text-foreground"
                     }`}>
                       {link.name}
@@ -146,7 +158,7 @@ const Header = () => {
           </div>
 
           {/* Quick Links List */}
-          <div className="px-4 mt-4">
+          <div className="px-4 mt-2">
             <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-1">
               Quick Access
             </h3>
@@ -155,7 +167,7 @@ const Header = () => {
                 { name: "Vijayawada Hotels", path: "/hotels?city=vijayawada" },
                 { name: "Nandyala Stays", path: "/hotels?city=nandyala" },
                 { name: "Temple Tours", path: "/temples" },
-                { name: "Travel Services", path: "/services" },
+                { name: "Contact Us", path: "/contact" },
               ].map((item, index) => (
                 <Link
                   key={item.name}

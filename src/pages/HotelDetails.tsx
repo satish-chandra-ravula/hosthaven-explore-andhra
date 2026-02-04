@@ -30,6 +30,7 @@ const hotelData: Record<string, {
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200",
       "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
     ],
     description: "Experience luxury and comfort at Taj Gateway Hotel, perfectly located near Tirumala Temple. Our hotel offers world-class amenities, authentic South Indian cuisine, and personalized service to make your pilgrimage memorable.",
     amenities: [
@@ -45,11 +46,65 @@ const hotelData: Record<string, {
     ],
     mentorContact: "+91 98765 43210",
   },
+  "2": {
+    id: "2",
+    name: "Fortune Murali Park",
+    location: "Vijayawada",
+    address: "MG Road, Vijayawada 520010",
+    price: 7200,
+    rating: 4.8,
+    reviews: 312,
+    images: [
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800",
+      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+    ],
+    description: "Premium hotel in the heart of Vijayawada, close to Kanaka Durga Temple. Features modern amenities, spa facilities, and authentic Andhra cuisine.",
+    amenities: [
+      { name: "Free WiFi", icon: "wifi" },
+      { name: "Restaurant", icon: "restaurant" },
+      { name: "Parking", icon: "parking" },
+      { name: "Gym", icon: "gym" },
+    ],
+    roomTypes: [
+      { name: "Standard Room", price: 7200, capacity: 2 },
+      { name: "Deluxe Suite", price: 11000, capacity: 3 },
+    ],
+    mentorContact: "+91 98765 43211",
+  },
+  "3": {
+    id: "3",
+    name: "Sri Sai Residency",
+    location: "Nandyala",
+    address: "Temple Road, Nandyala 518501",
+    price: 3200,
+    rating: 4.5,
+    reviews: 145,
+    images: [
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200",
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+    ],
+    description: "Comfortable stay near Mahanandi Temple. Perfect for pilgrims seeking peace and convenience.",
+    amenities: [
+      { name: "Free WiFi", icon: "wifi" },
+      { name: "Restaurant", icon: "restaurant" },
+      { name: "Parking", icon: "parking" },
+    ],
+    roomTypes: [
+      { name: "Standard Room", price: 3200, capacity: 2 },
+      { name: "Deluxe Room", price: 4500, capacity: 3 },
+    ],
+    mentorContact: "+91 98765 43212",
+  },
 };
+
+const defaultHotel = hotelData["1"];
 
 const HotelDetails = () => {
   const { id } = useParams();
-  const hotel = hotelData[id || "1"] || hotelData["1"];
+  const hotel = hotelData[id || "1"] || defaultHotel;
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -71,25 +126,41 @@ const HotelDetails = () => {
             Back to Hotels
           </Link>
 
-          {/* Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="md:col-span-2 rounded-2xl overflow-hidden aspect-[16/10]">
-              <img
-                src={hotel.images[0]}
-                alt={hotel.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="grid grid-rows-2 gap-4">
-              {hotel.images.slice(1, 3).map((img, index) => (
-                <div key={index} className="rounded-2xl overflow-hidden">
+          {/* Images - Vertical on mobile, Grid on desktop */}
+          <div className="mb-8">
+            {/* Mobile: Vertical stack with smooth scroll */}
+            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
+              {hotel.images.map((img, index) => (
+                <div key={index} className="rounded-xl overflow-hidden aspect-video">
                   <img
                     src={img}
-                    alt={`${hotel.name} ${index + 2}`}
+                    alt={`${hotel.name} ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
               ))}
+            </div>
+
+            {/* Desktop: Grid layout */}
+            <div className="hidden md:grid grid-cols-3 gap-4">
+              <div className="col-span-2 rounded-2xl overflow-hidden aspect-[16/10]">
+                <img
+                  src={hotel.images[0]}
+                  alt={hotel.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="grid grid-rows-2 gap-4">
+                {hotel.images.slice(1, 3).map((img, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden">
+                    <img
+                      src={img}
+                      alt={`${hotel.name} ${index + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -105,7 +176,7 @@ const HotelDetails = () => {
                   </div>
                   <span className="text-muted-foreground text-sm">({hotel.reviews} reviews)</span>
                 </div>
-                <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+                <h1 className="text-2xl md:text-4xl font-serif font-bold text-foreground">
                   {hotel.name}
                 </h1>
                 <div className="flex items-center gap-2 text-muted-foreground mt-2">
