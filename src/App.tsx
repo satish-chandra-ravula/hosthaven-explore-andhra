@@ -11,6 +11,7 @@ import HomeDetails from "./pages/HomeDetails";
 import Temples from "./pages/Temples";
 import TempleDetails from "./pages/TempleDetails";
 import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import VendorLogin from "./pages/VendorLogin";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/temples" element={<Temples />} />
           <Route path="/temples/:id" element={<TempleDetails />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/vendor/login" element={<VendorLogin />} />

@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Star, MapPin, Wifi, UtensilsCrossed, Car, Bed, Users, ArrowLeft, Calendar } from "lucide-react";
+import { Star, MapPin, Bed, Users, ArrowLeft, Calendar, Wifi } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
@@ -31,6 +31,7 @@ const homesData: Record<string, HomeData> = {
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200",
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
     ],
     description: "Experience the charm of traditional Andhra living at this beautiful riverside villa. Located near the iconic Prakasam Barrage, this home offers stunning views of the Krishna River and easy access to Kanaka Durga Temple. The villa features spacious rooms, a private garden, and authentic South Indian hospitality.",
     bedrooms: 3,
@@ -129,24 +130,7 @@ const homesData: Record<string, HomeData> = {
   },
 };
 
-const defaultHome: HomeData = {
-  id: "1",
-  name: "Krishna Riverside Villa",
-  location: "Vijayawada",
-  address: "Near Prakasam Barrage, Vijayawada 520001",
-  price: 4500,
-  rating: 4.7,
-  reviews: 89,
-  images: [
-    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
-  ],
-  description: "Experience the charm of traditional Andhra living at this beautiful riverside villa.",
-  bedrooms: 3,
-  guests: 6,
-  amenities: ["River View", "Kitchen", "Garden", "WiFi", "Parking", "AC"],
-};
+const defaultHome = homesData["1"];
 
 const HomeDetails = () => {
   const { id } = useParams();
@@ -162,25 +146,41 @@ const HomeDetails = () => {
             Back to Homes
           </Link>
 
-          {/* Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="md:col-span-2 rounded-2xl overflow-hidden aspect-[16/10]">
-              <img
-                src={home.images[0]}
-                alt={home.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="grid grid-rows-2 gap-4">
-              {home.images.slice(1, 3).map((img, index) => (
-                <div key={index} className="rounded-2xl overflow-hidden">
+          {/* Images - Vertical on mobile, Grid on desktop */}
+          <div className="mb-8">
+            {/* Mobile: Vertical stack with smooth scroll */}
+            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
+              {home.images.map((img, index) => (
+                <div key={index} className="rounded-xl overflow-hidden aspect-video">
                   <img
                     src={img}
-                    alt={`${home.name} ${index + 2}`}
+                    alt={`${home.name} ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
               ))}
+            </div>
+
+            {/* Desktop: Grid layout */}
+            <div className="hidden md:grid grid-cols-3 gap-4">
+              <div className="col-span-2 rounded-2xl overflow-hidden aspect-[16/10]">
+                <img
+                  src={home.images[0]}
+                  alt={home.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="grid grid-rows-2 gap-4">
+                {home.images.slice(1, 3).map((img, index) => (
+                  <div key={index} className="rounded-2xl overflow-hidden">
+                    <img
+                      src={img}
+                      alt={`${home.name} ${index + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -196,7 +196,7 @@ const HomeDetails = () => {
                   </div>
                   <span className="text-muted-foreground text-sm">({home.reviews} reviews)</span>
                 </div>
-                <h1 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+                <h1 className="text-2xl md:text-4xl font-serif font-bold text-foreground">
                   {home.name}
                 </h1>
                 <div className="flex items-center gap-2 text-muted-foreground mt-2">
