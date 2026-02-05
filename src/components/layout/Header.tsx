@@ -20,7 +20,7 @@ const Header = () => {
     <>
       <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md shadow-card">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-14 md:h-20">
             {/* Mobile Menu Button */}
             <button
               className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
@@ -34,8 +34,22 @@ const Header = () => {
               <img src={logo} alt="HostHaven" className="h-12 md:h-14 w-auto" />
             </Link>
 
-            {/* Mobile Center - Spacer */}
-            <div className="md:hidden flex-1" />
+            {/* Mobile Navigation Tabs */}
+            <nav className="md:hidden flex items-center gap-1 overflow-x-auto scrollbar-hide">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
+                    location.pathname === link.path
+                      ? "bg-primary/15 text-primary"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
 
             {/* Mobile Right - Globe Icon Only */}
             <button className="md:hidden p-2 rounded-full bg-primary/10">
