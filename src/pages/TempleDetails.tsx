@@ -185,33 +185,43 @@ const TempleDetails = () => {
 
           {/* Images - Vertical on mobile, Hero on desktop */}
           <div className="mb-8">
-            {/* Mobile: Vertical stack with smooth scroll */}
-            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
-              {temple.images.map((img, index) => (
-                <div key={index} className="rounded-xl overflow-hidden aspect-video relative">
-                  <img
-                    src={img}
-                    alt={`${temple.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                  {index === 0 && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-heritage-brown/80 via-transparent to-transparent">
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full mb-2">
-                          {temple.region}
-                        </span>
-                        <h1 className="text-xl font-serif font-bold text-cream-light">
-                          {temple.name}
-                        </h1>
-                        <div className="flex items-center gap-1 text-cream-light/80 text-sm mt-1">
-                          <MapPin className="w-4 h-4" />
-                          {temple.location}
+            {/* Mobile: Horizontal scroll gallery */}
+            <div className="md:hidden">
+              <div className="flex gap-3 overflow-x-auto scroll-smooth pb-2 snap-x snap-mandatory scrollbar-hide">
+                {temple.images.map((img, index) => (
+                  <div key={index} className="flex-shrink-0 w-[85%] snap-center rounded-xl overflow-hidden aspect-video relative">
+                    <img
+                      src={img}
+                      alt={`${temple.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    {index === 0 && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-heritage-brown/80 via-transparent to-transparent">
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full mb-2">
+                            {temple.region}
+                          </span>
+                          <h1 className="text-xl font-serif font-bold text-cream-light">
+                            {temple.name}
+                          </h1>
+                          <div className="flex items-center gap-1 text-cream-light/80 text-sm mt-1">
+                            <MapPin className="w-4 h-4" />
+                            {temple.location}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-1.5 mt-3">
+                {temple.images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full bg-muted-foreground/30`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Desktop: Hero Image */}
