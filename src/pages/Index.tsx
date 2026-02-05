@@ -1,7 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
 import FeatureCards from "@/components/home/FeatureCards";
-import CategoryNav from "@/components/home/CategoryNav";
 import DestinationsSection from "@/components/home/DestinationsSection";
 import RecommendationsSection from "@/components/home/RecommendationsSection";
 import TemplesPreview from "@/components/home/TemplesPreview";
@@ -13,7 +12,6 @@ const Index = () => {
     <Layout>
       <HeroSection />
       <FeatureCards />
-      <CategoryNav />
       <DestinationsSection />
       <RecommendationsSection />
       <TemplesPreview />
