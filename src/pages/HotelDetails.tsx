@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Star, MapPin, Wifi, UtensilsCrossed, Car, Dumbbell, Phone, ArrowLeft, Calendar, Users } from "lucide-react";
+import { Star, MapPin, Wifi, UtensilsCrossed, Car, Dumbbell, Phone, ArrowLeft, Calendar, Users, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const hotelData: Record<string, {
   id: string;
@@ -105,6 +112,8 @@ const defaultHotel = hotelData["1"];
 const HotelDetails = () => {
   const { id } = useParams();
   const hotel = hotelData[id || "1"] || defaultHotel;
+  const [bookingRoom, setBookingRoom] = useState<{ name: string; price: number; capacity: number } | null>(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -126,19 +135,31 @@ const HotelDetails = () => {
             Back to Hotels
           </Link>
 
-          {/* Images - Vertical on mobile, Grid on desktop */}
+          {/* Gallery - Horizontal scroll on mobile, Grid on desktop */}
           <div className="mb-8">
-            {/* Mobile: Vertical stack with smooth scroll */}
-            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
-              {hotel.images.map((img, index) => (
-                <div key={index} className="rounded-xl overflow-hidden aspect-video">
-                  <img
-                    src={img}
-                    alt={`${hotel.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
+            {/* Mobile: Horizontal scroll gallery */}
+            <div className="md:hidden">
+              <div className="flex gap-3 overflow-x-auto scroll-smooth pb-2 snap-x snap-mandatory scrollbar-hide">
+                {hotel.images.map((img, index) => (
+                  <div key={index} className="flex-shrink-0 w-[85%] snap-center rounded-xl overflow-hidden aspect-video">
+                    <img
+                      src={img}
+                      alt={`${hotel.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-1.5 mt-3">
+                {hotel.images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === 0 ? "bg-primary" : "bg-muted-foreground/30"
+                    }`}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Desktop: Grid layout */}
@@ -219,7 +240,7 @@ const HotelDetails = () => {
                           ₹{room.price.toLocaleString()}
                           <span className="text-muted-foreground font-normal text-sm">/night</span>
                         </p>
-                        <Button variant="gold">Book Now</Button>
+                        <Button variant="gold" onClick={() => setBookingRoom(room)}>Book Now</Button>
                       </div>
                     </div>
                   ))}
@@ -284,6 +305,57 @@ const HotelDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Booking Modal */}
+      <Dialog open={!!bookingRoom} onOpenChange={() => setBookingRoom(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-serif">Book {bookingRoom?.name}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 pt-4">
+            <div className="p-4 bg-muted rounded-xl">
+              <p className="text-sm text-muted-foreground">Room Price</p>
+              <p className="text-2xl font-semibold text-foreground">
+                ₹{bookingRoom?.price.toLocaleString()}
+                <span className="text-muted-foreground font-normal text-sm">/night</span>
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">Up to {bookingRoom?.capacity} guests</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-medium text-muted-foreground mb-1 block">Check In</label>
+                <Input type="date" className="h-10 bg-muted border-0 rounded-lg" />
+              </div>
+              <div>
+                <label className="text-xs font-medium text-muted-foreground mb-1 block">Check Out</label>
+                <Input type="date" className="h-10 bg-muted border-0 rounded-lg" />
+              </div>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">Number of Guests</label>
+              <select className="w-full h-10 px-3 bg-muted border-0 rounded-lg text-sm">
+                {Array.from({ length: bookingRoom?.capacity || 2 }, (_, i) => i + 1).map((num) => (
+                  <option key={num} value={num}>{num} Guest{num > 1 ? "s" : ""}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">Full Name</label>
+              <Input placeholder="Enter your name" className="h-10 bg-muted border-0 rounded-lg" />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">Phone Number</label>
+              <Input placeholder="+91 98765 43210" className="h-10 bg-muted border-0 rounded-lg" />
+            </div>
+            <Button variant="hero" className="w-full" size="lg">
+              Confirm Booking
+            </Button>
+            <p className="text-xs text-center text-muted-foreground">
+              Free cancellation up to 24 hours before check-in
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

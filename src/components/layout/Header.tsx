@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, Hotel, Home, Landmark, Wrench, LogIn, UserPlus, House, Globe } from "lucide-react";
+import { Menu, X, Hotel, Home, Landmark, Wrench, LogIn, UserPlus, House, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
@@ -34,12 +34,13 @@ const Header = () => {
               <img src={logo} alt="HostHaven" className="h-12 md:h-14 w-auto" />
             </Link>
 
-            {/* Mobile Center - Globe Icon */}
-            <div className="md:hidden">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            {/* Mobile Center - Spacer */}
+            <div className="md:hidden flex-1" />
+
+            {/* Mobile Right - Globe Icon Only */}
+            <button className="md:hidden p-2 rounded-full bg-primary/10">
                 <Globe className="w-5 h-5 text-primary" />
-              </div>
-            </div>
+            </button>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">
@@ -62,7 +63,6 @@ const Header = () => {
             <div className="hidden md:flex items-center gap-3">
               <Link to="/login">
                 <Button variant="ghost" size="sm">
-                  <User className="w-4 h-4 mr-1" />
                   Login
                 </Button>
               </Link>
@@ -72,11 +72,6 @@ const Header = () => {
                 </Button>
               </Link>
             </div>
-
-            {/* Mobile Right - User Icon */}
-            <button className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors">
-              <User className="w-5 h-5 text-muted-foreground" />
-            </button>
           </div>
         </div>
       </header>

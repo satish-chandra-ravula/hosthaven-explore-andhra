@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon, Users, Search } from "lucide-react";
+import { CalendarDays, Users, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -31,35 +31,34 @@ const HeroSection = () => {
 
   return (
     <section className="bg-gradient-to-b from-cream to-cream-light">
-      <div className="container mx-auto px-4 pt-4 pb-6">
-        {/* Logo - Centered on mobile, visible on all screens */}
-        <div className="flex justify-center mb-6 md:hidden">
+      <div className="container mx-auto px-4 pt-2 pb-6">
+        {/* Logo - Large and centered on mobile like reference */}
+        <div className="flex justify-center mb-4 md:hidden">
           <img 
             src={logo} 
             alt="HostHaven - Explore Andhra's Heritage" 
-            className="h-28 w-auto object-contain"
+            className="h-40 w-auto object-contain"
           />
         </div>
 
         {/* Tagline */}
-        <h1 className="text-xl md:text-3xl font-serif font-bold text-center text-foreground mb-6">
+        <h1 className="text-xl md:text-3xl font-serif font-bold text-center text-foreground mb-4">
           Find Hotels at Best Prices
         </h1>
 
         {/* Search Card */}
-        <div className="bg-card rounded-xl shadow-card p-4 max-w-2xl mx-auto">
-          {/* Date Row */}
-          <div className="grid grid-cols-2 gap-3 mb-3">
-            {/* Check In */}
+        <div className="bg-card rounded-xl shadow-card p-3 max-w-2xl mx-auto">
+          {/* Single Row: Check In - Check Out */}
+          <div className="flex items-center gap-2 p-3 bg-muted rounded-lg mb-3">
             <Popover>
               <PopoverTrigger asChild>
-                <button className="text-left p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors">
-                  <p className="text-xs text-muted-foreground font-medium mb-0.5">Check In</p>
+                <button className="flex-1 text-left">
+                  <p className="text-[10px] text-muted-foreground font-medium">Check In</p>
                   <p className={cn(
-                    "text-sm font-medium",
+                    "text-xs font-medium",
                     !checkIn && "text-muted-foreground"
                   )}>
-                    {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select date"}
+                    {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select"}
                   </p>
                 </button>
               </PopoverTrigger>
@@ -75,16 +74,17 @@ const HeroSection = () => {
               </PopoverContent>
             </Popover>
 
-            {/* Check Out */}
+            <span className="text-muted-foreground text-xs">-</span>
+
             <Popover>
               <PopoverTrigger asChild>
-                <button className="text-left p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors">
-                  <p className="text-xs text-muted-foreground font-medium mb-0.5">Date Out</p>
+                <button className="flex-1 text-left">
+                  <p className="text-[10px] text-muted-foreground font-medium">Date Out</p>
                   <p className={cn(
-                    "text-sm font-medium",
+                    "text-xs font-medium",
                     !checkOut && "text-muted-foreground"
                   )}>
-                    {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select date"}
+                    {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select"}
                   </p>
                 </button>
               </PopoverTrigger>
@@ -99,45 +99,43 @@ const HeroSection = () => {
                 />
               </PopoverContent>
             </Popover>
-          </div>
 
-          {/* Room & Guest Row */}
-          <div className="flex items-center gap-3 p-3 bg-muted rounded-lg mb-4">
-            <CalendarIcon className="w-5 h-5 text-primary flex-shrink-0" />
+            <div className="w-px h-8 bg-border" />
+
+            <CalendarDays className="w-4 h-4 text-primary flex-shrink-0" />
             <select
               value={rooms}
               onChange={(e) => setRooms(e.target.value)}
-              className="bg-transparent text-sm font-medium appearance-none cursor-pointer focus:outline-none flex-1"
+              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none w-16"
             >
               {[1, 2, 3, 4, 5].map((num) => (
                 <option key={num} value={num}>
-                  {num} Room{num > 1 ? "s" : ""}
+                  {num} Rm
                 </option>
               ))}
             </select>
-            <span className="text-muted-foreground">-</span>
+            <span className="text-muted-foreground text-xs">-</span>
             <select
               value={guests}
               onChange={(e) => setGuests(e.target.value)}
-              className="bg-transparent text-sm font-medium appearance-none cursor-pointer focus:outline-none flex-1"
+              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none w-20"
             >
               {[1, 2, 3, 4, 5, 6].map((num) => (
                 <option key={num} value={num}>
-                  {num} Guest{num > 1 ? "s" : ""}
+                  {num} Guests
                 </option>
               ))}
             </select>
-            <Users className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+            <Users className="w-4 h-4 text-muted-foreground flex-shrink-0" />
           </div>
 
           {/* Search Button */}
           <Button 
             variant="hero" 
             size="lg" 
-            className="w-full text-base"
+            className="w-full text-sm"
             onClick={handleSearch}
           >
-            <Search className="w-4 h-4 mr-2" />
             Find Hotels Now
           </Button>
         </div>

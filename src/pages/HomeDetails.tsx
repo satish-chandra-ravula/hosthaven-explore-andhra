@@ -148,17 +148,27 @@ const HomeDetails = () => {
 
           {/* Images - Vertical on mobile, Grid on desktop */}
           <div className="mb-8">
-            {/* Mobile: Vertical stack with smooth scroll */}
-            <div className="md:hidden space-y-3 max-h-[60vh] overflow-y-auto scroll-smooth rounded-2xl">
-              {home.images.map((img, index) => (
-                <div key={index} className="rounded-xl overflow-hidden aspect-video">
-                  <img
-                    src={img}
-                    alt={`${home.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
+            {/* Mobile: Horizontal scroll gallery */}
+            <div className="md:hidden">
+              <div className="flex gap-3 overflow-x-auto scroll-smooth pb-2 snap-x snap-mandatory scrollbar-hide">
+                {home.images.map((img, index) => (
+                  <div key={index} className="flex-shrink-0 w-[85%] snap-center rounded-xl overflow-hidden aspect-video">
+                    <img
+                      src={img}
+                      alt={`${home.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-1.5 mt-3">
+                {home.images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full bg-muted-foreground/30`}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Desktop: Grid layout */}
