@@ -37,43 +37,15 @@ const templeData: Record<string, TempleData> = {
       "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
       "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
     ],
-    history: `The Tirumala Venkateswara Temple is one of the most visited religious sites in the world. Located on the seventh peak of Tirumala Hills, this ancient temple is dedicated to Lord Venkateswara, a form of Lord Vishnu. 
+    history: `The Tirumala Venkateswara Temple is one of the most visited religious sites in the world. Located on the seventh peak of Tirumala Hills, this ancient temple is dedicated to Lord Venkateswara, a form of Lord Vishnu.
 
-The temple's origins date back over 2,000 years, with references in ancient texts and scriptures. The current structure was built by various dynasties including the Pallavas, Cholas, and the Vijayanagara Empire. The temple is known for its unique blend of Dravidian and Chalukyan architectural styles.
-
-According to legend, Lord Vishnu took a loan from Kubera (the god of wealth) for his marriage to Goddess Padmavati. The gold and wealth donated by millions of devotees is said to repay this divine debt. The temple is one of the richest in the world and attracts around 50,000-100,000 pilgrims daily.`,
-    timings: {
-      morning: "3:00 AM - 12:00 PM",
-      evening: "1:00 PM - 9:00 PM",
-      special: "During festivals, temple opens 24 hours",
-    },
+The temple's origins date back over 2,000 years, with references in ancient texts and scriptures.`,
+    timings: { morning: "3:00 AM - 12:00 PM", evening: "1:00 PM - 9:00 PM", special: "During festivals, temple opens 24 hours" },
     darshanTypes: [
-      {
-        name: "Sarva Darshan",
-        duration: "6-12 hours",
-        price: "Free",
-        description: "Free darshan available to all devotees with long waiting times",
-      },
-      {
-        name: "Special Entry Darshan",
-        duration: "2-4 hours",
-        price: "₹300",
-        description: "Faster darshan with dedicated queue",
-      },
-      {
-        name: "Divya Darshan",
-        duration: "1-2 hours",
-        price: "₹500",
-        description: "Priority entry with minimal waiting",
-      },
-      {
-        name: "VIP Break Darshan",
-        duration: "30-60 mins",
-        price: "₹10,000+",
-        description: "Premium darshan for special guests and donors",
-      },
+      { name: "Sarva Darshan", duration: "6-12 hours", price: "Free", description: "Free darshan available to all devotees" },
+      { name: "Special Entry Darshan", duration: "2-4 hours", price: "₹300", description: "Faster darshan with dedicated queue" },
     ],
-    nearbyHotels: ["Taj Gateway", "Fortune Kences", "Marasa Sarovar"],
+    nearbyHotels: ["Taj Gateway", "Fortune Kences"],
   },
   "kanaka-durga": {
     id: "kanaka-durga",
@@ -85,39 +57,15 @@ According to legend, Lord Vishnu took a loan from Kubera (the god of wealth) for
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
       "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
     ],
-    history: `The Kanaka Durga Temple is an ancient Hindu temple dedicated to Goddess Durga, situated atop the Indrakeeladri hill on the banks of the Krishna River in Vijayawada.
-
-According to mythology, Goddess Durga killed the demon Mahishasura at this very spot after a fierce battle. The temple has mentions in the Rig Veda and is believed to be one of the Shakti Peethas.
-
-The temple was originally built during the rule of the Rajendra Chola dynasty and was later renovated by various rulers. The goddess here is known as Kanaka Durga because she is adorned with gold ornaments. The annual Dasara festival celebrated here attracts millions of devotees.`,
-    timings: {
-      morning: "5:30 AM - 12:30 PM",
-      evening: "4:00 PM - 9:00 PM",
-      special: "Extended hours during Navaratri",
-    },
+    history: `The Kanaka Durga Temple is an ancient Hindu temple dedicated to Goddess Durga, situated atop the Indrakeeladri hill on the banks of the Krishna River in Vijayawada.`,
+    timings: { morning: "5:30 AM - 12:30 PM", evening: "4:00 PM - 9:00 PM", special: "Extended hours during Navaratri" },
     darshanTypes: [
-      {
-        name: "Free Darshan",
-        duration: "2-4 hours",
-        price: "Free",
-        description: "Regular queue darshan",
-      },
-      {
-        name: "Special Darshan",
-        duration: "1-2 hours",
-        price: "₹100",
-        description: "Faster darshan through special entrance",
-      },
-      {
-        name: "Abhishekam",
-        duration: "45 mins",
-        price: "₹1,000",
-        description: "Participate in ritual bathing of the deity",
-      },
+      { name: "Free Darshan", duration: "2-4 hours", price: "Free", description: "Regular queue darshan" },
+      { name: "Special Darshan", duration: "1-2 hours", price: "₹100", description: "Faster darshan through special entrance" },
     ],
-    nearbyHotels: ["Fortune Murali Park", "The Gateway Hotel", "Quality Inn DV Manor"],
+    nearbyHotels: ["Fortune Murali Park", "The Gateway Hotel"],
   },
-  "mahanandi": {
+  mahanandi: {
     id: "mahanandi",
     name: "Mahanandi Temple",
     location: "Nandyala, Kurnool District",
@@ -126,23 +74,66 @@ The temple was originally built during the rule of the Rajendra Chola dynasty an
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
       "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
     ],
-    history: `Mahanandi Temple is a famous Hindu temple dedicated to Lord Shiva. It is one of the nine Nandi temples in the Nallamala forest region.
-
-The temple is known for its sacred pushkarini (temple tank) and the beautiful surroundings of the Nallamala Hills.`,
-    timings: {
-      morning: "5:30 AM - 12:30 PM",
-      evening: "4:00 PM - 8:30 PM",
-      special: "Special timings during Maha Shivaratri",
-    },
+    history: `Mahanandi Temple is a famous Hindu temple dedicated to Lord Shiva. It is one of the nine Nandi temples in the Nallamala forest region. Known for its sacred pushkarini and beautiful surroundings.`,
+    timings: { morning: "5:30 AM - 12:30 PM", evening: "4:00 PM - 8:30 PM", special: "Special timings during Maha Shivaratri" },
     darshanTypes: [
-      {
-        name: "Regular Darshan",
-        duration: "1-2 hours",
-        price: "Free",
-        description: "Standard darshan for all devotees",
-      },
+      { name: "Regular Darshan", duration: "1-2 hours", price: "Free", description: "Standard darshan for all devotees" },
     ],
-    nearbyHotels: ["Sri Sai Residency", "Local Lodges"],
+    nearbyHotels: ["Sri Sai Residency"],
+  },
+  yaganti: {
+    id: "yaganti",
+    name: "Yaganti Uma Maheshwara Temple",
+    location: "Kurnool District",
+    region: "Rayalaseema",
+    images: [
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+      "https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=800",
+    ],
+    history: `Yaganti Temple is a famous ancient temple dedicated to Lord Shiva located in the Kurnool district. The temple is renowned for its Nandi statue that is believed to be growing in size over the years. The temple complex includes a cave temple and is surrounded by the stunning Nallamala Hills. It is a popular weekend destination for devotees across Andhra Pradesh.`,
+    timings: { morning: "6:00 AM - 12:30 PM", evening: "3:00 PM - 8:00 PM", special: "Special poojas during Maha Shivaratri" },
+    darshanTypes: [
+      { name: "Regular Darshan", duration: "1-2 hours", price: "Free", description: "Standard darshan for all devotees" },
+      { name: "Special Pooja", duration: "30-45 mins", price: "₹200", description: "Special abhishekam and pooja" },
+    ],
+    nearbyHotels: ["AP Tourism Guest House", "Local Lodges"],
+  },
+  ahobilam: {
+    id: "ahobilam",
+    name: "Ahobilam Narasimha Temple",
+    location: "Nandyala, Kurnool District",
+    region: "Rayalaseema",
+    images: [
+      "https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=1200",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
+    ],
+    history: `Ahobilam is a cluster of nine Narasimha temples nestled in the forested Nallamala Hills. It is believed to be the place where Lord Narasimha appeared to save Prahlada. The nine shrines are divided between Upper Ahobilam and Lower Ahobilam, each with its unique form of Lord Narasimha.`,
+    timings: { morning: "6:00 AM - 1:00 PM", evening: "3:00 PM - 7:00 PM", special: "Narasimha Jayanti celebrations" },
+    darshanTypes: [
+      { name: "Regular Darshan", duration: "2-3 hours", price: "Free", description: "Visit all nine shrines" },
+      { name: "Special Darshan", duration: "1-2 hours", price: "₹100", description: "Priority darshan" },
+    ],
+    nearbyHotels: ["APTDC Guest House", "Local Lodges"],
+  },
+  srisailam: {
+    id: "srisailam",
+    name: "Srisailam Mallikarjuna Temple",
+    location: "Nallamala Hills",
+    region: "Rayalaseema",
+    images: [
+      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=1200",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
+    ],
+    history: `Srisailam is one of the 12 Jyotirlingas and one of the 18 Shakti Peethas, making it doubly sacred. Set amidst the dense Nallamala forests along the Krishna River, this ancient temple is dedicated to Lord Mallikarjuna Swamy and Goddess Bhramaramba Devi.`,
+    timings: { morning: "4:30 AM - 1:00 PM", evening: "2:00 PM - 9:00 PM", special: "Maha Shivaratri special darshan" },
+    darshanTypes: [
+      { name: "Free Darshan", duration: "2-4 hours", price: "Free", description: "Standard darshan" },
+      { name: "Special Darshan", duration: "1 hour", price: "₹150", description: "Priority entry" },
+    ],
+    nearbyHotels: ["APTDC Haritha Hotel", "Srisailam Guest Houses"],
   },
 };
 

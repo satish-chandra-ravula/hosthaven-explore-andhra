@@ -10,6 +10,7 @@ import Homes from "./pages/Homes";
 import HomeDetails from "./pages/HomeDetails";
 import Temples from "./pages/Temples";
 import TempleDetails from "./pages/TempleDetails";
+import DeviationTemples from "./pages/DeviationTemples";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
@@ -17,6 +18,7 @@ import Signup from "./pages/Signup";
 import VendorLogin from "./pages/VendorLogin";
 import VendorSignup from "./pages/VendorSignup";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/hotels" element={<Hotels />} />
@@ -34,6 +37,7 @@ const App = () => (
           <Route path="/homes/:id" element={<HomeDetails />} />
           <Route path="/temples" element={<Temples />} />
           <Route path="/temples/:id" element={<TempleDetails />} />
+          <Route path="/deviation-temples" element={<DeviationTemples />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
