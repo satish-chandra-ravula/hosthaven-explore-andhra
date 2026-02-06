@@ -32,14 +32,7 @@ const HeroSection = () => {
   return (
     <section className="bg-gradient-to-b from-cream to-cream-light">
       <div className="container mx-auto px-4 pt-2 pb-6">
-        {/* Logo - Large and centered on mobile like reference */}
-        <div className="flex justify-center mb-4 md:hidden">
-          <img 
-            src={logo} 
-            alt="HostHaven - Explore Andhra's Heritage" 
-            className="h-40 w-auto object-contain"
-          />
-        </div>
+        {/* Logo removed from hero - now in header top-left on mobile */}
 
         {/* Tagline */}
         <h1 className="text-xl md:text-3xl font-serif font-bold text-center text-foreground mb-4">

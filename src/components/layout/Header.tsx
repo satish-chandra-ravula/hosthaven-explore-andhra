@@ -29,26 +29,30 @@ const Header = () => {
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-            {/* Logo - Desktop Only (centered on mobile is in Hero) */}
-            <Link to="/" className="hidden md:flex items-center gap-2">
-              <img src={logo} alt="HostHaven" className="h-12 md:h-14 w-auto" />
+            {/* Logo - Always visible, left on mobile, left on desktop */}
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="HostHaven" className="h-10 md:h-14 w-auto" />
             </Link>
 
-            {/* Mobile Navigation Tabs */}
-            <nav className="md:hidden flex items-center gap-1 overflow-x-auto scrollbar-hide">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
-                    location.pathname === link.path
-                      ? "bg-primary/15 text-primary"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+            {/* Mobile Navigation Icons */}
+            <nav className="md:hidden flex items-center gap-3 overflow-x-auto scrollbar-hide">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-all ${
+                      location.pathname === link.path
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-[9px] font-medium">{link.name}</span>
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Mobile Right - Globe Icon Only */}
