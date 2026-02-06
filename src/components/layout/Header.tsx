@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Hotel, Home, Landmark, Wrench, LogIn, UserPlus, House, Globe } from "lucide-react";
+import { Menu, X, Hotel, Home, Landmark, Wrench, LogIn, UserPlus, House } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
@@ -21,17 +21,9 @@ const Header = () => {
       <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md shadow-card">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-14 md:h-20">
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-
-            {/* Logo - Always visible, left on mobile, left on desktop */}
+            {/* Logo - Left on mobile */}
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="HostHaven" className="h-10 md:h-14 w-auto" />
+              <img src={logo} alt="HostHaven" className="h-12 md:h-14 w-auto" />
             </Link>
 
             {/* Mobile Navigation Icons */}
@@ -55,26 +47,33 @@ const Header = () => {
               })}
             </nav>
 
-            {/* Mobile Right - Globe Icon Only */}
-            <button className="md:hidden p-2 rounded-full bg-primary/10">
-                <Globe className="w-5 h-5 text-primary" />
+            {/* Mobile Menu Button - Right side */}
+            <button
+              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation with Icons */}
             <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                      location.pathname === link.path
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {link.name}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop Auth */}
