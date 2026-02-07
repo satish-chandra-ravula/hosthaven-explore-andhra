@@ -19,8 +19,8 @@ const WeekendDeviationBanner = () => {
 
   return (
     <section className="px-4 py-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="relative rounded-2xl overflow-hidden h-[200px] md:h-[280px]">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative rounded-2xl overflow-hidden h-[200px] md:h-[320px]">
           {/* Carousel Images */}
           {bannerImages.map((img, index) => (
             <img

@@ -40,7 +40,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Search Card */}
-        <div className="bg-card rounded-xl shadow-card p-3 max-w-xl mx-auto">
+        <div className="bg-card rounded-xl shadow-card p-3 max-w-4xl mx-auto">
           {/* Dates Row */}
           <div className="flex items-center gap-2 p-3 bg-muted rounded-lg mb-2">
             <Popover>
