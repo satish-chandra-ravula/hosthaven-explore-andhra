@@ -4,6 +4,15 @@ import { MapPin, ChevronRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
+import kanakaDurgaImg from "@/assets/temples/kanaka-durga.jpg";
+import undavalliImg from "@/assets/temples/undavalli.jpg";
+import prakasamImg from "@/assets/temples/prakasam-barrage.jpg";
+import mahanandiImg from "@/assets/temples/mahanandi.jpg";
+import ahobilamImg from "@/assets/temples/ahobilam.jpg";
+import srisailamImg from "@/assets/temples/srisailam.jpg";
+import vetapalemImg from "@/assets/temples/vetapalem-temple.jpg";
+import vodarevuImg from "@/assets/temples/vodarevu.jpg";
+
 interface Temple {
   id: string;
   name: string;
@@ -19,7 +28,7 @@ const temples: Temple[] = [
     name: "Kanaka Durga Temple",
     location: "Vijayawada",
     region: "Vijayawada",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Vijayawada_Kanakadurga_Temple_on_Indrakeeladri.jpg/800px-Vijayawada_Kanakadurga_Temple_on_Indrakeeladri.jpg",
+    image: kanakaDurgaImg,
     description: "Ancient temple dedicated to Goddess Durga, situated atop Indrakeeladri hill on Krishna riverbank.",
   },
   {
@@ -27,7 +36,7 @@ const temples: Temple[] = [
     name: "Undavalli Caves",
     location: "Vijayawada",
     region: "Vijayawada",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/1st_Floor-_Undavalli_Caves.JPG/800px-1st_Floor-_Undavalli_Caves.JPG",
+    image: undavalliImg,
     description: "Ancient rock-cut cave temples dating back to the 4th-5th century CE with stunning sculptures.",
   },
   {
@@ -35,7 +44,7 @@ const temples: Temple[] = [
     name: "Prakasam Barrage Temple",
     location: "Vijayawada",
     region: "Vijayawada",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Prakasam_Barrage%2C_Vijayawada.jpg/800px-Prakasam_Barrage%2C_Vijayawada.jpg",
+    image: prakasamImg,
     description: "Sacred temple near the iconic Prakasam Barrage with beautiful Krishna river views.",
   },
   {
@@ -43,7 +52,7 @@ const temples: Temple[] = [
     name: "Mahanandi Temple",
     location: "Nandyala",
     region: "Nandyala",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mahanadi_Temple%2C_Mahanandi%2C_Andhra_Pradesh_India_-_1.jpg/800px-Mahanadi_Temple%2C_Mahanandi%2C_Andhra_Pradesh_India_-_1.jpg",
+    image: mahanandiImg,
     description: "One of the nine Nandi temples, known for its perennial spring and ancient architecture.",
   },
   {
@@ -51,7 +60,7 @@ const temples: Temple[] = [
     name: "Ahobilam Temple",
     location: "Nandyala",
     region: "Nandyala",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Upper_Ahobilam_temple_Gopuram.jpg/800px-Upper_Ahobilam_temple_Gopuram.jpg",
+    image: ahobilamImg,
     description: "A cluster of nine Narasimha temples in the forested Nallamala Hills.",
   },
   {
@@ -59,7 +68,7 @@ const temples: Temple[] = [
     name: "Srisailam Temple",
     location: "Nandyala",
     region: "Nandyala",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Srisailam_Temple_01.jpg/800px-Srisailam_Temple_01.jpg",
+    image: srisailamImg,
     description: "One of the 12 Jyotirlingas, this ancient temple is set amidst the dense Nallamala forests.",
   },
   {
@@ -67,7 +76,7 @@ const temples: Temple[] = [
     name: "Sri Venkateswara Temple",
     location: "Vetapalem",
     region: "Vetapalem",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Tirumala_090615.jpg/800px-Tirumala_090615.jpg",
+    image: vetapalemImg,
     description: "Coastal temple dedicated to Lord Venkateswara with serene beach surroundings.",
   },
   {
@@ -75,7 +84,7 @@ const temples: Temple[] = [
     name: "Vodarevu Beach Temple",
     location: "Vetapalem",
     region: "Vetapalem",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Vodarevu_Beach.jpg/800px-Vodarevu_Beach.jpg",
+    image: vodarevuImg,
     description: "Beautiful seaside temple near the pristine Vodarevu beach.",
   },
 ];

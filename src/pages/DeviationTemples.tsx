@@ -3,6 +3,13 @@ import { MapPin, ChevronRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
+import yagentiImg from "@/assets/temples/yaganti.jpg";
+import mahanandiImg from "@/assets/temples/mahanandi.jpg";
+import ahobilamImg from "@/assets/temples/ahobilam.jpg";
+import srisailamImg from "@/assets/temples/srisailam.jpg";
+import kanakaDurgaImg from "@/assets/temples/kanaka-durga.jpg";
+import undavalliImg from "@/assets/temples/undavalli.jpg";
+
 interface DeviationTemple {
   id: string;
   name: string;
@@ -17,42 +24,42 @@ const deviationTemples: DeviationTemple[] = [
     name: "Yaganti Temple",
     location: "Kurnool District",
     tagline: "The Growing Nandi Wonder",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/15th_century_Yaganti_Umamahesvara_temple%2C_Andhra_Pradesh_India_-_128.jpg/800px-15th_century_Yaganti_Umamahesvara_temple%2C_Andhra_Pradesh_India_-_128.jpg",
+    image: yagentiImg,
   },
   {
     id: "mahanandi",
     name: "Mahanandi Temple",
     location: "Nandyala",
     tagline: "Sacred Springs of Shiva",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mahanadi_Temple%2C_Mahanandi%2C_Andhra_Pradesh_India_-_1.jpg/800px-Mahanadi_Temple%2C_Mahanandi%2C_Andhra_Pradesh_India_-_1.jpg",
+    image: mahanandiImg,
   },
   {
     id: "ahobilam",
     name: "Ahobilam Temple",
     location: "Nandyala",
     tagline: "Nine Forms of Narasimha",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Upper_Ahobilam_temple_Gopuram.jpg/800px-Upper_Ahobilam_temple_Gopuram.jpg",
+    image: ahobilamImg,
   },
   {
     id: "srisailam",
     name: "Srisailam Temple",
     location: "Nallamala Hills",
     tagline: "Jyotirlinga in the Forests",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Srisailam_Temple_01.jpg/800px-Srisailam_Temple_01.jpg",
+    image: srisailamImg,
   },
   {
     id: "kanaka-durga",
     name: "Kanaka Durga Temple",
     location: "Vijayawada",
     tagline: "Goddess on Indrakeeladri",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Vijayawada_Kanakadurga_Temple_on_Indrakeeladri.jpg/800px-Vijayawada_Kanakadurga_Temple_on_Indrakeeladri.jpg",
+    image: kanakaDurgaImg,
   },
   {
     id: "undavalli",
     name: "Undavalli Caves",
     location: "Vijayawada",
     tagline: "Ancient Rock-Cut Marvels",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/1st_Floor-_Undavalli_Caves.JPG/800px-1st_Floor-_Undavalli_Caves.JPG",
+    image: undavalliImg,
   },
 ];
 
