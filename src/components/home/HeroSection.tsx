@@ -40,15 +40,15 @@ const HeroSection = () => {
         </h1>
 
         {/* Search Card */}
-        <div className="bg-card rounded-xl shadow-card p-3 max-w-2xl mx-auto">
-          {/* Single Row: Check In - Check Out */}
-          <div className="flex items-center gap-2 p-3 bg-muted rounded-lg mb-3">
+        <div className="bg-card rounded-xl shadow-card p-3 max-w-xl mx-auto">
+          {/* Dates Row */}
+          <div className="flex items-center gap-2 p-3 bg-muted rounded-lg mb-2">
             <Popover>
               <PopoverTrigger asChild>
-                <button className="flex-1 text-left">
+                <button className="flex-1 text-left min-w-0">
                   <p className="text-[10px] text-muted-foreground font-medium">Check In</p>
                   <p className={cn(
-                    "text-xs font-medium",
+                    "text-xs font-medium truncate",
                     !checkIn && "text-muted-foreground"
                   )}>
                     {checkIn ? format(checkIn, "MMM dd, yyyy") : "Select"}
@@ -71,10 +71,10 @@ const HeroSection = () => {
 
             <Popover>
               <PopoverTrigger asChild>
-                <button className="flex-1 text-left">
+                <button className="flex-1 text-left min-w-0">
                   <p className="text-[10px] text-muted-foreground font-medium">Date Out</p>
                   <p className={cn(
-                    "text-xs font-medium",
+                    "text-xs font-medium truncate",
                     !checkOut && "text-muted-foreground"
                   )}>
                     {checkOut ? format(checkOut, "MMM dd, yyyy") : "Select"}
@@ -92,34 +92,35 @@ const HeroSection = () => {
                 />
               </PopoverContent>
             </Popover>
+          </div>
 
-            <div className="w-px h-8 bg-border" />
-
+          {/* Rooms & Guests Row */}
+          <div className="flex items-center gap-3 p-3 bg-muted rounded-lg mb-3">
             <CalendarDays className="w-4 h-4 text-primary flex-shrink-0" />
             <select
               value={rooms}
               onChange={(e) => setRooms(e.target.value)}
-              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none w-16"
+              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none flex-1"
             >
               {[1, 2, 3, 4, 5].map((num) => (
                 <option key={num} value={num}>
-                  {num} Rm
+                  {num} Room{num > 1 ? "s" : ""}
                 </option>
               ))}
             </select>
-            <span className="text-muted-foreground text-xs">-</span>
+            <div className="w-px h-6 bg-border" />
+            <Users className="w-4 h-4 text-primary flex-shrink-0" />
             <select
               value={guests}
               onChange={(e) => setGuests(e.target.value)}
-              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none w-20"
+              className="bg-transparent text-xs font-medium appearance-none cursor-pointer focus:outline-none flex-1"
             >
               {[1, 2, 3, 4, 5, 6].map((num) => (
                 <option key={num} value={num}>
-                  {num} Guests
+                  {num} Guest{num > 1 ? "s" : ""}
                 </option>
               ))}
             </select>
-            <Users className="w-4 h-4 text-muted-foreground flex-shrink-0" />
           </div>
 
           {/* Search Button */}
