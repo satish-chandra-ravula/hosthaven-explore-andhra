@@ -3,6 +3,16 @@ import { MapPin, Clock, ArrowLeft } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
+import kanakaDurgaImg from "@/assets/temples/kanaka-durga.jpg";
+import undavalliImg from "@/assets/temples/undavalli.jpg";
+import prakasamImg from "@/assets/temples/prakasam-barrage.jpg";
+import mahanandiImg from "@/assets/temples/mahanandi.jpg";
+import ahobilamImg from "@/assets/temples/ahobilam.jpg";
+import srisailamImg from "@/assets/temples/srisailam.jpg";
+import yagentiImg from "@/assets/temples/yaganti.jpg";
+import vetapalemImg from "@/assets/temples/vetapalem-temple.jpg";
+import vodarevuImg from "@/assets/temples/vodarevu.jpg";
+
 interface DarshanType {
   name: string;
   duration: string;
@@ -27,36 +37,12 @@ interface TempleData {
 }
 
 const templeData: Record<string, TempleData> = {
-  tirumala: {
-    id: "tirumala",
-    name: "Tirumala Venkateswara Temple",
-    location: "Tirupati, Chittoor District",
-    region: "Rayalaseema",
-    images: [
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
-      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
-    ],
-    history: `The Tirumala Venkateswara Temple is one of the most visited religious sites in the world. Located on the seventh peak of Tirumala Hills, this ancient temple is dedicated to Lord Venkateswara, a form of Lord Vishnu.
-
-The temple's origins date back over 2,000 years, with references in ancient texts and scriptures.`,
-    timings: { morning: "3:00 AM - 12:00 PM", evening: "1:00 PM - 9:00 PM", special: "During festivals, temple opens 24 hours" },
-    darshanTypes: [
-      { name: "Sarva Darshan", duration: "6-12 hours", price: "Free", description: "Free darshan available to all devotees" },
-      { name: "Special Entry Darshan", duration: "2-4 hours", price: "₹300", description: "Faster darshan with dedicated queue" },
-    ],
-    nearbyHotels: ["Taj Gateway", "Fortune Kences"],
-  },
   "kanaka-durga": {
     id: "kanaka-durga",
     name: "Kanaka Durga Temple",
     location: "Vijayawada, Krishna District",
     region: "Coastal Andhra",
-    images: [
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200",
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
-      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
-    ],
+    images: [kanakaDurgaImg],
     history: `The Kanaka Durga Temple is an ancient Hindu temple dedicated to Goddess Durga, situated atop the Indrakeeladri hill on the banks of the Krishna River in Vijayawada.`,
     timings: { morning: "5:30 AM - 12:30 PM", evening: "4:00 PM - 9:00 PM", special: "Extended hours during Navaratri" },
     darshanTypes: [
@@ -65,15 +51,38 @@ The temple's origins date back over 2,000 years, with references in ancient text
     ],
     nearbyHotels: ["Fortune Murali Park", "The Gateway Hotel"],
   },
+  undavalli: {
+    id: "undavalli",
+    name: "Undavalli Caves",
+    location: "Vijayawada",
+    region: "Coastal Andhra",
+    images: [undavalliImg],
+    history: `Undavalli Caves are ancient rock-cut cave temples dating back to the 4th-5th century CE. These monolithic caves feature stunning sculptures and are a fine example of Indian rock-cut architecture. The caves house a large statue of Vishnu in a reclining posture.`,
+    timings: { morning: "9:00 AM - 12:30 PM", evening: "1:30 PM - 5:30 PM", special: "Closed on Fridays" },
+    darshanTypes: [
+      { name: "General Entry", duration: "1 hour", price: "₹25", description: "Standard entry to explore the caves" },
+    ],
+    nearbyHotels: ["Fortune Murali Park", "Hotel Kandhari"],
+  },
+  "prakasam-barrage": {
+    id: "prakasam-barrage",
+    name: "Prakasam Barrage Temple",
+    location: "Vijayawada",
+    region: "Coastal Andhra",
+    images: [prakasamImg],
+    history: `Sacred temple near the iconic Prakasam Barrage with beautiful Krishna river views. The barrage itself is a major landmark connecting Krishna and Guntur districts.`,
+    timings: { morning: "6:00 AM - 12:00 PM", evening: "4:00 PM - 8:00 PM", special: "Open all days" },
+    darshanTypes: [
+      { name: "Regular Darshan", duration: "30 mins", price: "Free", description: "Standard darshan for all devotees" },
+    ],
+    nearbyHotels: ["Hotel Ilapuram", "Fortune Murali Park"],
+  },
   mahanandi: {
     id: "mahanandi",
     name: "Mahanandi Temple",
     location: "Nandyala, Kurnool District",
     region: "Rayalaseema",
-    images: [
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
-      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=800",
-    ],
+    images: [mahanandiImg],
     history: `Mahanandi Temple is a famous Hindu temple dedicated to Lord Shiva. It is one of the nine Nandi temples in the Nallamala forest region. Known for its sacred pushkarini and beautiful surroundings.`,
     timings: { morning: "5:30 AM - 12:30 PM", evening: "4:00 PM - 8:30 PM", special: "Special timings during Maha Shivaratri" },
     darshanTypes: [
@@ -86,11 +95,7 @@ The temple's origins date back over 2,000 years, with references in ancient text
     name: "Yaganti Uma Maheshwara Temple",
     location: "Kurnool District",
     region: "Rayalaseema",
-    images: [
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
-      "https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=800",
-    ],
+    images: [yagentiImg],
     history: `Yaganti Temple is a famous ancient temple dedicated to Lord Shiva located in the Kurnool district. The temple is renowned for its Nandi statue that is believed to be growing in size over the years. The temple complex includes a cave temple and is surrounded by the stunning Nallamala Hills. It is a popular weekend destination for devotees across Andhra Pradesh.`,
     timings: { morning: "6:00 AM - 12:30 PM", evening: "3:00 PM - 8:00 PM", special: "Special poojas during Maha Shivaratri" },
     darshanTypes: [
@@ -104,11 +109,7 @@ The temple's origins date back over 2,000 years, with references in ancient text
     name: "Ahobilam Narasimha Temple",
     location: "Nandyala, Kurnool District",
     region: "Rayalaseema",
-    images: [
-      "https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=1200",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
-    ],
+    images: [ahobilamImg],
     history: `Ahobilam is a cluster of nine Narasimha temples nestled in the forested Nallamala Hills. It is believed to be the place where Lord Narasimha appeared to save Prahlada. The nine shrines are divided between Upper Ahobilam and Lower Ahobilam, each with its unique form of Lord Narasimha.`,
     timings: { morning: "6:00 AM - 1:00 PM", evening: "3:00 PM - 7:00 PM", special: "Narasimha Jayanti celebrations" },
     darshanTypes: [
@@ -122,11 +123,7 @@ The temple's origins date back over 2,000 years, with references in ancient text
     name: "Srisailam Mallikarjuna Temple",
     location: "Nallamala Hills",
     region: "Rayalaseema",
-    images: [
-      "https://images.unsplash.com/photo-1545126221-15d5f92c9e2c?w=1200",
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800",
-    ],
+    images: [srisailamImg],
     history: `Srisailam is one of the 12 Jyotirlingas and one of the 18 Shakti Peethas, making it doubly sacred. Set amidst the dense Nallamala forests along the Krishna River, this ancient temple is dedicated to Lord Mallikarjuna Swamy and Goddess Bhramaramba Devi.`,
     timings: { morning: "4:30 AM - 1:00 PM", evening: "2:00 PM - 9:00 PM", special: "Maha Shivaratri special darshan" },
     darshanTypes: [
@@ -135,6 +132,32 @@ The temple's origins date back over 2,000 years, with references in ancient text
     ],
     nearbyHotels: ["APTDC Haritha Hotel", "Srisailam Guest Houses"],
   },
+  "vetapalem-temple": {
+    id: "vetapalem-temple",
+    name: "Sri Venkateswara Temple",
+    location: "Vetapalem",
+    region: "Coastal Andhra",
+    images: [vetapalemImg],
+    history: `Coastal temple dedicated to Lord Venkateswara with serene beach surroundings. A peaceful spiritual retreat in the Vetapalem region.`,
+    timings: { morning: "6:00 AM - 12:00 PM", evening: "4:00 PM - 8:00 PM", special: "Special events during Brahmotsavam" },
+    darshanTypes: [
+      { name: "Regular Darshan", duration: "30 mins - 1 hour", price: "Free", description: "Standard darshan" },
+    ],
+    nearbyHotels: ["Local Guest Houses"],
+  },
+  "chirala-beach-temple": {
+    id: "chirala-beach-temple",
+    name: "Vodarevu Beach Temple",
+    location: "Vetapalem",
+    region: "Coastal Andhra",
+    images: [vodarevuImg],
+    history: `Beautiful seaside temple near the pristine Vodarevu beach. A tranquil spot combining spiritual devotion with the serenity of the coast.`,
+    timings: { morning: "6:00 AM - 12:00 PM", evening: "4:00 PM - 7:30 PM", special: "Open all days" },
+    darshanTypes: [
+      { name: "Regular Darshan", duration: "30 mins", price: "Free", description: "Standard darshan" },
+    ],
+    nearbyHotels: ["Beach Resorts", "Local Lodges"],
+  },
 };
 
 const defaultTemple: TempleData = {
@@ -142,7 +165,7 @@ const defaultTemple: TempleData = {
   name: "Temple",
   location: "Andhra Pradesh",
   region: "Andhra",
-  images: ["https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200"],
+  images: [kanakaDurgaImg],
   history: "This ancient temple holds deep spiritual significance in the region.",
   timings: {
     morning: "6:00 AM - 12:00 PM",
