@@ -7,12 +7,12 @@ const FeatureCards = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
           {/* 24 Hour Check-In */}
-          <div className="gradient-gold rounded-xl p-4 shadow-gold border border-gold-light/30 flex flex-col items-center text-center hover:shadow-glow transition-all">
-            <div className="w-12 h-12 rounded-full bg-white/25 flex items-center justify-center mb-3">
-              <Clock className="w-6 h-6 text-primary-foreground" />
+          <div className="bg-primary/10 rounded-xl p-4 shadow-card border border-primary/15 flex flex-col items-center text-center hover:bg-primary/15 hover:shadow-card-hover transition-all">
+            <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mb-3">
+              <Clock className="w-6 h-6 text-gold-dark" />
             </div>
-            <h3 className="font-semibold text-sm text-primary-foreground mb-1">24 Hour Check-In</h3>
-            <p className="text-xs text-primary-foreground/80 leading-snug">
+            <h3 className="font-semibold text-sm text-foreground mb-1">24 Hour Check-In</h3>
+            <p className="text-xs text-muted-foreground leading-snug">
               59 sec resolve · refund
             </p>
           </div>
@@ -20,13 +20,13 @@ const FeatureCards = () => {
           {/* Customizable Rooms */}
           <Link 
             to="/contact"
-            className="gradient-gold rounded-xl p-4 shadow-gold border border-gold-light/30 flex flex-col items-center text-center hover:shadow-glow transition-all"
+            className="bg-primary/10 rounded-xl p-4 shadow-card border border-primary/15 flex flex-col items-center text-center hover:bg-primary/15 hover:shadow-card-hover transition-all"
           >
-            <div className="w-12 h-12 rounded-full bg-white/25 flex items-center justify-center mb-3">
-              <Settings2 className="w-6 h-6 text-primary-foreground" />
+            <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mb-3">
+              <Settings2 className="w-6 h-6 text-gold-dark" />
             </div>
-            <h3 className="font-semibold text-sm text-primary-foreground mb-1">Customizable Rooms</h3>
-            <p className="text-xs text-primary-foreground/80 leading-snug">
+            <h3 className="font-semibold text-sm text-foreground mb-1">Customizable Rooms</h3>
+            <p className="text-xs text-muted-foreground leading-snug">
               Tailor your stay to your needs
             </p>
           </Link>
