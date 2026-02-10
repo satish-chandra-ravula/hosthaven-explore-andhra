@@ -7,7 +7,7 @@ const FeatureCards = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
           {/* 24 Hour Check-In */}
-          <div className="bg-card rounded-xl p-4 shadow-lg border-2 border-primary ring-2 ring-primary/20 flex flex-col items-center text-center">
+          <div className="bg-card rounded-xl p-4 shadow-card border-2 border-primary/20 flex flex-col items-center text-center hover:shadow-card-hover hover:border-primary/40 transition-all">
             <div className="w-12 h-12 rounded-full bg-saffron/20 flex items-center justify-center mb-3">
               <Clock className="w-6 h-6 text-saffron" />
             </div>
@@ -20,7 +20,7 @@ const FeatureCards = () => {
           {/* Customizable Rooms */}
           <Link 
             to="/contact"
-            className="bg-card rounded-xl p-4 shadow-lg border-2 border-primary ring-2 ring-primary/20 flex flex-col items-center text-center"
+            className="bg-card rounded-xl p-4 shadow-card border-2 border-primary/20 flex flex-col items-center text-center hover:shadow-card-hover hover:border-primary/40 transition-all"
           >
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-3">
               <Settings2 className="w-6 h-6 text-primary" />
